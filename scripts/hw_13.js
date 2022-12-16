@@ -54,9 +54,21 @@ let users = [
 "address": "314 Dunne Place, Bawcomville, Guam, 9053"
 }
 ];
-const phoneNumbers = users
-.filter(phone =>  (Number(phone.balance.replace(',','').slice(1)) >= 2000))
-.map(phones => `${phones.phone}`);
-console.log(phoneNumbers);
-const balancesSum = users.reduce((total, users) => total + Number(users.balance.replace(',','').slice(1)),0);
-console.log(balancesSum);
+
+let phoneArray = [];
+let sum = 0;
+ for (let i=0; i < users.length; i++){
+ 
+ if(Number(users[i].balance.replace(',','').slice(1)) >= 2000){
+ phoneArray[i] = users[i].phone;
+ }
+     
+ sum += Number(users[i].balance.replace(',','').slice(1))
+ }
+console.log(phoneArray);
+console.log(`Total balance = ${sum}`);
+ 
+//  не пойму почему phoneArray[3] выводится как undefined в массив если if он не проходит
+console.log(Number(users[3].balance.replace(',', '').slice(1)));
+console.log(Number(users[3].balance.replace(',', '').slice(1)) > 2000);
+console.log(phoneArray[3]);
